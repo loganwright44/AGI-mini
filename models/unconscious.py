@@ -16,7 +16,7 @@ class Unconscious(nn.Module):
     )
     self.encoder = nn.TransformerEncoder(
       encoder_layer=encoder_layer,
-      num_layers=12
+      num_layers=4
     )
     self.fc_out = nn.Linear(in_features=hidden_features, out_features=out_features, device=device)
     self.out_features = out_features

@@ -58,3 +58,6 @@ The role of this model is one-fold: to handle extremes of the `state_vector` ten
 | Activation Function |          torch.nn.ReLU           |
 
 The role of these layers is to interpret the meaning of the transformer outputs and generate a response which minimizes punishment. Minimizing punishment is mathematically preferable since the value of the target converges.
+
+# Resources Used
+https://www.pytorch.com
