@@ -13,7 +13,8 @@ An attempt at a simple artificial general intelligence architecture (sub-super i
 |   Layer Component   |              Type                |
 |---------------------|----------------------------------|
 |      Embedding      |         torch.nn.Linear          |
-| Transformer Encoder | torch.nn.TransformerEncoderLayer |
+| Transformer Encoder |    torch.nn.TransformerEncoder   |
+|   Fully Connected   |         torch.nn.Linear          |
 
 The role of this sub-model is (as shown in the input `torch.Tensor`) to encode information about both the input vector and it's own "train-of-thought" vector, if you will. Context continually updates and short-term memory is a natural consequence of the transformer encoder algorithm; context of old information loses relevance as time passes.
 
@@ -28,9 +29,10 @@ The role of this sub-model is (as shown in the input `torch.Tensor`) to encode i
 |   Layer Component   |              Type                |
 |---------------------|----------------------------------|
 |      Embedding      |         torch.nn.Linear          |
-| Transformer Encoder | torch.nn.TransformerEncoderLayer |
+| Transformer Encoder |    torch.nn.TransformerEncoder   |
+|   Fully Connected   |         torch.nn.Linear          |
 
-The role of this model is one-fold: to handle out-of-the-ordinary `state_vector` tensors and to transform them into something representing urgent actionables (i.e. pain, avoid pain, etc.). This can be thought of as the reward algorithm of reinforcement learning. This could potentially be replaced by a mathematical function, but I expect a reward system of this kind to naturally lead to curiosity within the model.
+The role of this model is one-fold: to handle extremes of the `state_vector` tensor by transforming them into something representing urgent actionables (i.e. pain, pleasure, etc.). This can be thought of as the reward algorithm of reinforcement learning, but is self-managed. This could potentially be replaced by a mathematical function, but I expect a reward system of this kind to naturally lead to curiosity within the model.
 
 ## Response Sub-Model
 
@@ -53,5 +55,6 @@ The role of this model is one-fold: to handle out-of-the-ordinary `state_vector`
 |   Fully Connected   |         torch.nn.Linear          |
 | Activation Function |          torch.nn.ReLU           |
 |   Fully Connected   |         torch.nn.Linear          |
+| Activation Function |          torch.nn.ReLU           |
 
 The role of these layers is to interpret the meaning of the transformer outputs and generate a response which minimizes punishment. Minimizing punishment is mathematically preferable since the value of the target converges.
