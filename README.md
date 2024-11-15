@@ -59,5 +59,5 @@ The role of this model is one-fold: to handle extremes of the `state_vector` ten
 
 The role of these layers is to interpret the meaning of the transformer outputs and generate a response which minimizes punishment. Minimizing punishment is mathematically preferable since the value of the target converges.
 
-# Resources Used
+# Resources
 https://www.pytorch.com
